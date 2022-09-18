@@ -1,8 +1,8 @@
-import json
-import requests
-from flask import Flask, render_template
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from handlers.auth import auth
+from handlers.dashboard import dashboard
+from handlers.favorite import favorite
 
 
 app = Flask(__name__)
@@ -12,14 +12,8 @@ db = SQLAlchemy(app)
 
 app.secret_key = b'secret indeed'
 app.register_blueprint(auth)
-
-
-@app.route('/')
-def index():
-    res = requests.get('https://akabab.github.io/starwars-api/api/all.json')
-    data = json.loads(res.text)
-
-    return render_template("index.html")
+app.register_blueprint(dashboard)
+app.register_blueprint(favorite)
 
 
 if __name__ == "__main__":

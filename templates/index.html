@@ -1,10 +1,33 @@
-{% extends 'base.html'%}
+{% extends 'layout/loggedin.html'%}
 
 {% block head%}
-<title>Star Wars App</title>
+<title>Star Wars App | Home</title>
 {% endblock%}
 
 {% block body%}
-<h1>Star Wars App</h1>
-{% endblock%}
+<h1>Home page - {{email}}</h1>
 
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 pb-5">
+
+    {% for item in data %}
+    <div class="col">
+        <div class="card shadow-sm">
+            <img src="{{item.image}}" class="bd-placeholder-img card-img-top" width="100%" height="450" role="img"
+                 focusable="false">
+            <div class="card-body">
+                <h3>{{item.name}}</h3>
+                <p>Homeworld: {{item.homeworld}}</p>
+                <p>Species: {{item.species}}</p>
+                <p>gender: {{item.gender}}</p>
+
+                <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary"><3</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock%}
