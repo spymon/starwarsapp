@@ -5,29 +5,42 @@
 {% endblock%}
 
 {% block body%}
-<h1>Home page - {{email}}</h1>
 
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 pb-5">
+<header class="banner">
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col text-light z-index-3 text-center mt-5 fw-700">-->
+<!--                <h1 class="display-1">STAR WARS</h1>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+</header>
 
-    {% for item in data %}
-    <div class="col">
-        <div class="card shadow-sm">
-            <img src="{{item.image}}" class="bd-placeholder-img card-img-top" width="100%" height="450" role="img"
-                 focusable="false">
-            <div class="card-body">
-                <h3>{{item.name}}</h3>
-                <p>Homeworld: {{item.homeworld}}</p>
-                <p>Species: {{item.species}}</p>
-                <p>gender: {{item.gender}}</p>
+<section class="py-5 px-2 text-light" id="characters">
+    <div class="container">
+        <h1 class="my-5 text-center">Characters</h1>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            {% for item in data %}
+            <div class="col">
+                <div class="card border-1 border-secondary shadow-sm bg-dark text-light">
+                    <img src="{{item.image}}" alt="picture of {{item.name}}" class="bd-placeholder-img card-img-top"
+                         width="100%" role="img"
+                         focusable="false">
+                    <div class="card-body">
+                        <h3>{{item.name}}</h3>
+                        <p>Homeworld: {{item.homeworld}}</p>
+                        <p>Species: {{item.species}}</p>
+                        <p>gender: {{item.gender}}</p>
 
-                <div class="d-flex justify-content-between align-items-center">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary"><3</button>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-heart"></i></button>
+                        </div>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
-    {% endfor %}
-</div>
-
+</section>
 {% endblock%}

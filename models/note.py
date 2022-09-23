@@ -1,4 +1,4 @@
-from app import db
+from models.settings import db
 from datetime import datetime
 
 
@@ -7,4 +7,5 @@ class Note(db.Model):
     name = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = db.relationship("User")

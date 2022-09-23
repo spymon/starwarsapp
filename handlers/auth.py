@@ -1,6 +1,9 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for, sessions
 import hashlib
 
+from models.settings import db
+from models.user import User
+
 auth = Blueprint('auth', __name__)
 
 
@@ -8,13 +11,12 @@ auth = Blueprint('auth', __name__)
 def login():
     if request.method == "POST":
         email = request.form.get('email')
-        password = request.form.get('password1')
+        password = request.form.get('password')
 
-        # user = User.query.filter_by(email=email).first()
-        #
-        # if user:
-        #     if user.password == hashlib.sha256(password.encode()).hexdigest()
-        #         session['username'] = user['username']
+        user = db.query(User).filter_by(email=email).first()
+        if user:
+            if user.password == hashlib.sha256(password.encode()).hexdigest():
+                session['email'] = user.email
 
         return redirect(url_for('dashboard.index'))
     else:
@@ -32,24 +34,19 @@ def register():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
-        # try_user = User.query.filter_by(email=email).first()
+        try_user = db.query(User).filter_by(email=email).first()
 
-        # if try_user:
-        #     return "user already exist!"
+        if try_user:
+            return "user already exist!"
 
         if password1 != password2:
             return "passwords does not match!"
 
-        try:
-            pass
-            # new_user = User(username=username, email=email, password=hashlib.sha256(password1.encode()).hexdigest())
-            # db.session.commit()
-            # db.session.add(new_user)
-        except:
-            print("could not save user to the db")
+        new_user = User(username=username, email=email, password=hashlib.sha256(password1.encode()).hexdigest())
+        db.add(new_user)
+        db.commit()
 
         session['email'] = email
-
         return redirect(url_for('dashboard.index'))
     else:
         if "email" in session:

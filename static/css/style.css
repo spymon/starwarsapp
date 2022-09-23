@@ -1,0 +1,47 @@
+body{
+  display:flex;
+  flex-direction:column;
+}
+
+.banner {
+  width: 100%;
+  height: 80vh;
+  position: relative;
+  background: url("../images/banner.jpg") no-repeat top center/cover;
+}
+
+.banner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: inset 120px 100px 250px #000, inset -120px -100px 250px #000;
+}
+
+.z-index-3 {
+    z-index: 3;
+}
+
+.card img {
+height: 450px
+}
+
+footer{
+  margin-top:auto;
+}
+
+@media (max-width: 992px) {
+  .card img {
+    height: 400px
+  }
+}
+
+@media (max-width: 768px) {
+  .banner::after {
+    box-shadow: inset 80px 80px 250px #000, inset -80px -80px 250px #000;
+  }
+}

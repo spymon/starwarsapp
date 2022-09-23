@@ -5,28 +5,46 @@
 {% endblock%}
 
 {% block body%}
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col col-6">
+<div class="container py-5">
+    <div class="row justify-content-center text-light">
+        <div class="col-md-8 col-lg-6">
             <form action="/register" method="post">
                 <h2 class="mb-3">Sign Up for Star Wars App</h2>
                 <div class="form-group mb-3">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" name="username" id="username"
-                           placeholder="Enter username" required>
+                    <label for="username" class="mb-1">Username</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                        <input type="text" class="form-control" name="username" id="username"
+                               placeholder="Enter username" required aria-label="Username"
+                        >
+                    </div>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="exampleInputEmail">Email address</label>
-                    <input type="email" class="form-control" name="email" id="exampleInputEmail" aria-describedby="emailHelp"
-                           placeholder="Enter email" required>
+                    <label for="email" class="mb-1">Email</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                        <input type="email" class="form-control" name="email" id="email"
+                               placeholder="Enter email"aria-label="Email" required
+                        >
+                    </div>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="password1">Password</label>
-                    <input type="password" class="form-control" name="password1" id="password1" placeholder="Enter Password" required>
+                    <label for="password1" class="mb-1">Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-key"></i></span>
+                        <input type="password" class="form-control" name="password1" id="password1"
+                               placeholder="Enter password" aria-label="Password" required
+                        >
+                    </div>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="password2">Confirm password</label>
-                    <input type="password" class="form-control" name="password2" id="password2" placeholder="Confirm Password" required>
+                    <label for="password2" class="mb-1">Confirm password</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-key"></i></span>
+                        <input type="password" class="form-control" name="password2" id="password2"
+                               placeholder="Confirm password" aria-label="Confirm password" required
+                        >
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary mb-3">Submit</button>
                 <div class="form-group">

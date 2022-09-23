@@ -12,10 +12,7 @@ def index():
         res = requests.get('https://akabab.github.io/starwars-api/api/all.json')
         data = json.loads(res.text)
 
-        email = session['email']
-        # user = User.query.filter_By(email=email).first()
-
-        return render_template("index.html", email=email, data=data)
+        return render_template("index.html", data=data)
     else:
         return redirect(url_for('auth.login'))
 

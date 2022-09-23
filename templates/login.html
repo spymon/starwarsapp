@@ -5,26 +5,37 @@
 {% endblock%}
 
 {% block body%}
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col col-6">
-            <form action="/login" method="post">
-                <h2 class="mb-3">Sign in for Star Wars App</h2>
-                <div class="form-group mb-3">
-                    <label for="exampleInputEmail">Email address</label>
-                    <input type="email" class="form-control" name="email" id="exampleInputEmail" aria-describedby="emailHelp"
-                           placeholder="Enter email" required>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password" required>
-                </div>
-                <button type="submit" class="btn btn-primary mb-3">Submit</button>
-                <div class="form-group">
-                    <p>Don't have an account yet? <a href="{{url_for('auth.register')}}">Sign Up</a></p>
-                </div>
-            </form>
+<section class="bg-dark py-5">
+    <div class="container">
+        <div class="row justify-content-center text-light">
+            <div class="col-md-8 col-lg-6">
+                <form action="/login" method="post">
+                    <h2 class="mb-3">Sign in to Star Wars App</h2>
+                    <div class="form-group mb-3">
+                        <label for="email" class="mb-1">Email</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                            <input type="email" class="form-control" name="email" id="email"
+                                   placeholder="Enter email" aria-label="Email" required
+                            >
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="password" class="mb-1">Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-key"></i></span>
+                            <input type="password" class="form-control" name="password" id="password"
+                                   placeholder="Enter Password" required aria-label="Password" required
+                            >
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-3">Submit</button>
+                    <div class="form-group">
+                        <p>Don't have an account yet? <a href="{{url_for('auth.register')}}">Sign Up</a></p>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</section>
 {% endblock%}
