@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, session, redirect, url_for, sessions
+from flask import Blueprint, render_template, request, session, redirect, url_for, flash
 import hashlib
 
 from models.settings import db
@@ -17,7 +17,14 @@ def login():
         if user:
             if user.password == hashlib.sha256(password.encode()).hexdigest():
                 session['email'] = user.email
+            else:
+                flash("Incorrect credentials", "danger")
+                return redirect(url_for('auth.login'))
+        else:
+            flash("Incorrect credentials", "danger")
+            return redirect(url_for('auth.login'))
 
+        flash("Logged in successfully", "success")
         return redirect(url_for('dashboard.index'))
     else:
         if "email" in session:
@@ -36,17 +43,21 @@ def register():
 
         try_user = db.query(User).filter_by(email=email).first()
 
-        if try_user:
-            return "user already exist!"
-
         if password1 != password2:
-            return "passwords does not match!"
+            flash("Passwords does not match!", "danger")
+            return redirect(url_for('auth.register'))
+
+        if try_user:
+            flash("User already exist!", "danger")
+            return redirect(url_for('auth.register'))
 
         new_user = User(username=username, email=email, password=hashlib.sha256(password1.encode()).hexdigest())
         db.add(new_user)
         db.commit()
 
-        session['email'] = email
+        session['email'] = new_user.email
+
+        flash("Logged in successfully", "success")
         return redirect(url_for('dashboard.index'))
     else:
         if "email" in session:
