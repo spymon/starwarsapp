@@ -8,7 +8,22 @@
 <section class=" py-5 text-light">
     <div class="container">
         <h1>Profile</h1>
-
-    </div>
+        <div class="card text-white bg-secondary mt-5">
+            <div class="card-header">
+                <h3>Wellcome to your profile page {{user. username}}</h3>
+            </div>
+            <div class="card-body ">
+                <h4 class="card-title">Profile info</h4>
+                <h5 class="card-text">Username: {{user.username}} </h5>
+                <h5 class="card-text">Email: {{user.email}} </h5>
+                <div class="d-flex flex-column flex-lg-row justify-content-lg-between">
+                    <div class="d-flex flex-column flex-lg-row">
+                        <a class="btn btn-lg btn-primary my-1 me-lg-1" href="#">Change username</a>
+                        <a class="btn btn-lg btn-primary my-1" href="#">Change password</a>
+                    </div>
+                        <a class="btn btn-lg btn-danger my-1" href="#">Delete profile</a>
+                </div>
+            </div>
+        </div>
 </section>
 {% endblock%}
