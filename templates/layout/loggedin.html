@@ -41,15 +41,17 @@
                     <li class="nav-item dropdown d-none d-lg-block">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-person-fill  fs-4"></i>
+                            <i class="bi bi-person-fill fs-4"></i>
                         </a>
-                        <ul class="dropdown-menu bg-dark shadow border-secondary" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item text-light" href="{{url_for('user.profile')}}">Profil</a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="{{url_for('user.profile')}}">Profile</a>
                             </li>
                             <li>
-                                <hr class="dropdown-divider border-secondary">
+                                <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item text-light" href="{{url_for('auth.logout')}}">Log out</a>
+                            <li>
+                                <a class="dropdown-item" href="{{url_for('auth.logout')}}">Log out</a>
                             </li>
                         </ul>
                     </li>
