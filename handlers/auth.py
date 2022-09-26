@@ -17,6 +17,7 @@ def login():
         if user:
             if user.password == hashlib.sha256(password.encode()).hexdigest():
                 session['email'] = user.email
+                session['username'] = user.username
             else:
                 flash("Incorrect credentials", "danger")
                 return redirect(url_for('auth.login'))
@@ -56,6 +57,7 @@ def register():
         db.commit()
 
         session['email'] = new_user.email
+        session['username'] = new_user.username
 
         flash("Logged in successfully", "success")
         return redirect(url_for('dashboard.index'))
