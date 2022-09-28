@@ -1,4 +1,5 @@
 import hashlib
+from datetime import datetime
 
 from flask import Blueprint, render_template, request, session, redirect, url_for, flash
 
@@ -32,6 +33,8 @@ def change_password():
                 return redirect(url_for('user.change_password'))
 
             logged_user.password = hashlib.sha256(password1.encode()).hexdigest()
+            logged_user.updated_at = datetime.utcnow()
+
             db.add(logged_user)
             db.commit()
 
@@ -52,6 +55,8 @@ def change_username():
             username = request.form.get('username')
 
             logged_user.username = username
+            logged_user.updated_at = datetime.utcnow()
+
             db.add(logged_user)
             db.commit()
 
