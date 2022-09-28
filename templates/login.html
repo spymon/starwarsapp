@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row justify-content-center text-light">
             <div class="col-md-8 col-lg-6">
-                <form action="/login" method="post">
+                <form action="{{url_for('auth.login')}}" method="post">
                     <h2 class="mb-3">Sign in to Star Wars App</h2>
                     <div class="form-group mb-3">
                         <label for="email" class="mb-1">Email</label>

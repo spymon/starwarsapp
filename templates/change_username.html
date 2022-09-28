@@ -1,0 +1,28 @@
+{% extends 'layout/loggedin.html'%}
+
+{% block head%}
+<title>Star Wars App | Change password</title>
+{% endblock%}
+
+{% block body%}
+<div class="container py-5">
+    <div class="row justify-content-center text-light">
+        <div class="col-md-8 col-lg-6">
+            <form action="{{url_for('user.change_username')}}" method="post">
+                <h2 class="mb-3">Change username</h2>
+                <div class="form-group mb-3">
+                    <label for="username" class="mb-1">Username</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                        <input type="text" class="form-control" name="username" id="username"
+                               placeholder="Enter username" required aria-label="Username"
+                        >
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mb-3">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock%}
+

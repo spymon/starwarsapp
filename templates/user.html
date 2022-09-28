@@ -16,14 +16,44 @@
                 <h4 class="card-title">Profile info</h4>
                 <h5 class="card-text">Username: {{user.username}} </h5>
                 <h5 class="card-text">Email: {{user.email}} </h5>
+            </div>
+            <div class="card-footer">
                 <div class="d-flex flex-column flex-lg-row justify-content-lg-between">
                     <div class="d-flex flex-column flex-lg-row">
-                        <a class="btn btn-lg btn-primary my-1 me-lg-1" href="#">Change username</a>
-                        <a class="btn btn-lg btn-primary my-1" href="#">Change password</a>
+                        <a class="btn btn-lg btn-primary my-2 me-lg-2" href="{{url_for('user.change_username')}}">Change username</a>
+                        <a class="btn btn-lg btn-primary my-2" href="{{url_for('user.change_password')}}">Change password</a>
                     </div>
-                        <a class="btn btn-lg btn-danger my-1" href="#">Delete profile</a>
+                    <button type="button" class="btn btn-lg btn-danger my-2" data-bs-toggle="modal"
+                            data-bs-target="#deleteProfileModal">Delete profile
+                    </button>
                 </div>
             </div>
         </div>
+    </div>
 </section>
+<div class="modal fade" id="deleteProfileModal" tabindex="-1" aria-labelledby="DeleteProfileModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="DeleteProfileModalLabel">Are you sure you want to delete your
+                    account?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body lead">
+                Your account will be deleted permanently.
+                <form action="{{url_for('user.delete_user')}}" id="deleteAccountForm" method="post" class="mt-3" >
+                    <div class="mb-3">
+                        <label for="deleteAccountPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" id="deleteAccountPassword">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" id="deleteAccountButton">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock%}
