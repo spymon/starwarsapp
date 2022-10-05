@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from models.settings import db
 
 
